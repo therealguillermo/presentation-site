@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="ENGR 407 — personal reflection" />
-    <title>ENGR 407 — reflection</title>
+    <meta name="description" content="ENGR 407 - In One Minute. A reflection." />
+    <title>ENGR 407 - In One Minute</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,9 +18,8 @@
 
     <header class="hero" id="top">
       <div class="hero__inner">
-        <p class="hero__kicker">Presentation</p>
-        <h1 class="hero__title" id="site-title">ENGR 407 — One minute</h1>
-        <p class="hero__subtitle" id="site-subtitle">A reflection, not a retrospective</p>
+        <h1 class="hero__title" id="site-title">ENGR 407 - In One Minute</h1>
+        <p class="hero__subtitle" id="site-subtitle">A reflection</p>
         <nav class="nav-chips" aria-label="Sections">
           <a href="#section-p1">Project 1</a>
           <a href="#section-p2">Project 2</a>
@@ -37,10 +36,7 @@
           <span class="panel__index">01</span>
           <h2 class="panel__title" id="label-p1">Project one — Nittany Craft shop</h2>
         </div>
-        <p class="panel__lede">
-          Your shop loads in the frame below. If it does not appear, open it in a new tab—many production sites block
-          embedding with <code>X-Frame-Options</code> or <code>Content-Security-Policy</code>.
-        </p>
+        <p class="panel__lede">If the preview does not load here, use <strong>Open in new tab</strong>.</p>
         <div class="browser-chrome">
           <div class="browser-chrome__dots" aria-hidden="true">
             <span></span><span></span><span></span>
@@ -73,10 +69,10 @@
           <span class="panel__index">03</span>
           <h2 class="panel__title" id="label-p3">Project three — slides</h2>
         </div>
-        <p class="panel__lede" id="project3-hint">
-          Upload your <code>.pptx</code> to this project (for example <code>/files/your-deck.pptx</code>) or any public
-          HTTPS URL, then set <code>pptxPublicUrl</code> in <code>js/config.js</code>. The viewer below is Microsoft’s
-          Office Online embed (requires a reachable file URL).
+        <p class="panel__lede deck-actions" id="deck-actions" hidden>
+          <a class="deck-actions__link" id="deck-open" href="#" target="_blank" rel="noopener noreferrer">Open deck</a>
+          <span class="deck-actions__sep" aria-hidden="true">·</span>
+          <a class="deck-actions__link" id="deck-download" href="#" download>Download</a>
         </p>
         <div class="deck-wrap" id="project3-wrap">
           <iframe
@@ -85,6 +81,7 @@
             title="Project three slides"
             loading="lazy"
             allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
           ></iframe>
         </div>
       </section>

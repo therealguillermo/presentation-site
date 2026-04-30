@@ -70,15 +70,6 @@ code {
   margin: 0 auto;
 }
 
-.hero__kicker {
-  margin: 0 0 0.5rem;
-  font-size: 0.75rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--accent);
-  font-weight: 600;
-}
-
 .hero__title {
   margin: 0;
   font-family: var(--font-serif);
@@ -256,7 +247,7 @@ main {
 }
 
 .embed-shell:has(.embed-shell__frame:not([src]))::after {
-  content: "Set your site URL in js/config.js → project1SiteUrl.";
+  content: "Preview is not available here.";
   position: absolute;
   inset: 0;
   display: flex;
@@ -269,14 +260,9 @@ main {
 }
 
 .gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-}
-
-.gallery__empty {
-  grid-column: 1 / -1;
-  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
 }
 
 .gallery-card {
@@ -285,14 +271,24 @@ main {
   overflow: hidden;
   border: 1px solid var(--border);
   background: rgba(0, 0, 0, 0.25);
-  aspect-ratio: 4 / 3;
+  height: clamp(280px, 42vh, 520px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem;
 }
 
 .gallery-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
   display: block;
+}
+
+.gallery-card--tall {
+  height: clamp(420px, 70vh, 860px);
 }
 
 .gallery-card--missing {
@@ -300,12 +296,39 @@ main {
   align-items: center;
   justify-content: center;
   min-height: 160px;
+  height: auto;
+  padding: 1rem;
 }
 
 .gallery-card__placeholder {
   padding: 1rem;
   text-align: center;
   font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.deck-actions {
+  margin: 0 0 1.25rem;
+}
+
+.deck-actions[hidden] {
+  display: none !important;
+}
+
+.deck-actions__link {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.deck-actions__link:hover,
+.deck-actions__link:focus-visible {
+  text-decoration: underline;
+  outline: none;
+}
+
+.deck-actions__sep {
+  margin: 0 0.4rem;
   color: var(--text-muted);
 }
 
@@ -329,7 +352,7 @@ main {
 }
 
 .deck-wrap--empty::after {
-  content: "PPTX URL not set — add pptxPublicUrl in js/config.js";
+  content: "Presentation preview unavailable.";
   position: absolute;
   inset: 0;
   display: flex;

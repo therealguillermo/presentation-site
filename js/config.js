@@ -1,39 +1,34 @@
 /**
- * Edit these values for your presentation.
- * PPTX: upload your file to a public HTTPS URL (e.g. GitHub raw, Google Drive direct link, or /files/your-deck.pptx on this site),
- * then set pptxPublicUrl to that full URL. The embed uses Microsoft’s viewer.
+ * Site copy and media paths. Optional: set pptxPublicUrl if the Office viewer
+ * cannot load from your deployed origin alone.
  */
 window.ENGR407_CONFIG = {
-  title: "ENGR 407 — One minute",
-  subtitle: "A reflection, not a retrospective",
+  title: "ENGR 407 - In One Minute",
+  subtitle: "A reflection",
 
-  /** Full URL of the other site you built (must allow embedding, or use “open in new tab” only). */
   project1SiteUrl: "https://engr-407-shop.vercel.app/",
-
-  /** Optional label above the embed */
   project1Label: "Project one — Nittany Craft shop",
 
-  /** Paths are served from the site root on Vercel. Add JPEG/PNG files under /images/ in this repo. */
   project2Images: [
-    "/images/project2-1.jpg",
-    "/images/project2-2.jpg",
-    "/images/project2-3.jpg"
+    "/images/IMG_4291.PNG",
+    "/images/IMG_1130.png",
+    "/images/1772577721.5322142.jpg"
   ],
 
   project2Label: "Project two — in pictures",
 
+  /** Served from site root (encode spaces/parentheses). Used for download + Office viewer src. */
+  pptxFilePath: "/files/hotrod_pitch_v2%20(1).pptx",
+
   /**
-   * Public HTTPS URL to your .pptx file (encoded automatically if you paste raw URL).
-   * Example after uploading to this repo: "https://your-site.vercel.app/files/deck.pptx"
+   * Optional absolute HTTPS URL to the same .pptx if needed for the embed viewer.
+   * If the Office embed shows “We can't open this for you”, set this to a public URL
+   * Microsoft can fetch (for example the raw GitHub file URL for this repo).
    */
   pptxPublicUrl: "",
 
   project3Label: "Project three — slides",
 
-  /** Section 4 heading */
   reflectionTitle: "Written reflection",
-
-  /** About half a paragraph to one paragraph; replace with your own words */
-  reflectionHtml:
-    "<p>Replace this block in <code>js/config.js</code> with your own reflection—something that symbolizes your experience in ENGR 407 in about a minute when you present it. Keep it personal and specific; avoid a dry list of what you did.</p>"
+  reflectionHtml: ""
 };

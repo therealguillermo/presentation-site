@@ -8,10 +8,27 @@
 
   function buildOfficeEmbedUrl(fileUrl) {
     if (!fileUrl || !String(fileUrl).trim()) return "";
-    return (
+    var base =
       "https://view.officeapps.live.com/op/embed.aspx?src=" +
-      encodeURIComponent(fileUrl.trim())
-    );
+      encodeURIComponent(fileUrl.trim());
+    return base;
+  }
+
+  function getDeckAbsoluteUrl() {
+    var explicit = (cfg.pptxPublicUrl || "").trim();
+    if (explicit) return explicit;
+    var path = (cfg.pptxFilePath || "").trim();
+    if (!path) return "";
+    if (window.location.protocol === "file:") return "";
+    return window.location.origin + path;
+  }
+
+  function getDeckDownloadHref() {
+    var path = (cfg.pptxFilePath || "").trim();
+    if (!path) return "";
+    if (path.indexOf("http") === 0) return path;
+    if (window.location.protocol === "file:") return "";
+    return window.location.origin + path;
   }
 
   setText("site-title", cfg.title);
@@ -21,9 +38,9 @@
   setText("label-p3", cfg.project3Label);
   setText("label-reflection", cfg.reflectionTitle);
 
-  const frame = document.getElementById("project1-frame");
-  const openBtn = document.getElementById("project1-open");
-  const url = cfg.project1SiteUrl;
+  var frame = document.getElementById("project1-frame");
+  var openBtn = document.getElementById("project1-open");
+  var url = cfg.project1SiteUrl;
   if (frame && url && url !== "https://example.com") {
     frame.src = url;
     frame.title = cfg.project1Label || "Project website";
@@ -39,55 +56,60 @@
     }
   }
 
-  const gallery = document.getElementById("project2-gallery");
+  var gallery = document.getElementById("project2-gallery");
   if (gallery && Array.isArray(cfg.project2Images)) {
     gallery.innerHTML = "";
-    if (cfg.project2Images.length === 0) {
-      const empty = document.createElement("p");
-      empty.className = "panel__lede gallery__empty";
-      empty.textContent =
-        "Add image files under images/ in this repo, then list their paths in project2Images in js/config.js.";
-      gallery.appendChild(empty);
-    }
-    cfg.project2Images.forEach((src, i) => {
-      const figure = document.createElement("figure");
+    cfg.project2Images.forEach(function (src, i) {
+      var figure = document.createElement("figure");
       figure.className = "gallery-card";
-      const img = document.createElement("img");
+      if (typeof src === "string" && src.toUpperCase().indexOf("IMG_4291") !== -1) {
+        figure.classList.add("gallery-card--tall");
+      }
+      var img = document.createElement("img");
       img.src = src;
       img.alt = "Project two image " + (i + 1);
       img.loading = "lazy";
-      img.addEventListener("error", () => {
+      img.addEventListener("error", function () {
         figure.classList.add("gallery-card--missing");
         img.replaceWith(document.createElement("div"));
         figure.querySelector("div").className = "gallery-card__placeholder";
-        figure.querySelector("div").textContent = "Add " + src.split("/").pop();
+        figure.querySelector("div").textContent = "Photo unavailable";
       });
       figure.appendChild(img);
       gallery.appendChild(figure);
     });
   }
 
-  const deckFrame = document.getElementById("project3-frame");
-  const deckWrap = document.getElementById("project3-wrap");
-  const deckHint = document.getElementById("project3-hint");
-  const embedUrl = buildOfficeEmbedUrl(cfg.pptxPublicUrl);
-  if (deckFrame && embedUrl) {
-    deckFrame.src = embedUrl;
+  var deckFrame = document.getElementById("project3-frame");
+  var deckWrap = document.getElementById("project3-wrap");
+  var deckOpen = document.getElementById("deck-open");
+  var deckDownload = document.getElementById("deck-download");
+  var deckActions = document.getElementById("deck-actions");
+
+  var deckUrl = getDeckAbsoluteUrl();
+  if (deckFrame && deckUrl) {
+    deckFrame.src = buildOfficeEmbedUrl(deckUrl);
     deckFrame.title = cfg.project3Label || "Slides";
-    if (deckHint) deckHint.hidden = true;
   } else if (deckWrap) {
     deckWrap.classList.add("deck-wrap--empty");
   }
 
-  const reflection = document.getElementById("reflection-body");
+  if (deckActions) {
+    var dl = getDeckDownloadHref();
+    if (dl && deckDownload) deckDownload.href = dl;
+    if (deckUrl && deckOpen) deckOpen.href = deckUrl;
+    if (deckUrl || dl) deckActions.removeAttribute("hidden");
+  }
+
+  var reflection = document.getElementById("reflection-body");
   if (reflection && cfg.reflectionHtml) {
     reflection.innerHTML = cfg.reflectionHtml;
   }
 
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener("click", function (e) {
-      const id = this.getAttribute("href").slice(1);
-      const target = document.getElementById(id);
+      var id = anchor.getAttribute("href").slice(1);
+      var target = document.getElementById(id);
       if (target) {
         e.preventDefault();
         target.scrollIntoView({ behavior: "smooth", block: "start" });
