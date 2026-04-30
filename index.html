@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="ENGR 407 — personal reflection" />
+    <title>ENGR 407 — reflection</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#section-p1">Skip to content</a>
+
+    <header class="hero" id="top">
+      <div class="hero__inner">
+        <p class="hero__kicker">Presentation</p>
+        <h1 class="hero__title" id="site-title">ENGR 407 — One minute</h1>
+        <p class="hero__subtitle" id="site-subtitle">A reflection, not a retrospective</p>
+        <nav class="nav-chips" aria-label="Sections">
+          <a href="#section-p1">Project 1</a>
+          <a href="#section-p2">Project 2</a>
+          <a href="#section-p3">Project 3</a>
+          <a href="#section-reflection">Reflection</a>
+        </nav>
+      </div>
+      <div class="hero__accent" aria-hidden="true"></div>
+    </header>
+
+    <main>
+      <section class="panel" id="section-p1" aria-labelledby="label-p1">
+        <div class="panel__head">
+          <span class="panel__index">01</span>
+          <h2 class="panel__title" id="label-p1">Project one — Nittany Craft shop</h2>
+        </div>
+        <p class="panel__lede">
+          Your shop loads in the frame below. If it does not appear, open it in a new tab—many production sites block
+          embedding with <code>X-Frame-Options</code> or <code>Content-Security-Policy</code>.
+        </p>
+        <div class="browser-chrome">
+          <div class="browser-chrome__dots" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </div>
+          <a class="browser-chrome__open" id="project1-open" href="#" target="_blank" rel="noopener noreferrer"
+            >Open in new tab</a
+          >
+        </div>
+        <div class="embed-shell">
+          <iframe
+            id="project1-frame"
+            class="embed-shell__frame"
+            title="Project one website"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </section>
+
+      <section class="panel panel--alt" id="section-p2" aria-labelledby="label-p2">
+        <div class="panel__head">
+          <span class="panel__index">02</span>
+          <h2 class="panel__title" id="label-p2">Project two — in pictures</h2>
+        </div>
+        <div class="gallery" id="project2-gallery"></div>
+      </section>
+
+      <section class="panel" id="section-p3" aria-labelledby="label-p3">
+        <div class="panel__head">
+          <span class="panel__index">03</span>
+          <h2 class="panel__title" id="label-p3">Project three — slides</h2>
+        </div>
+        <p class="panel__lede" id="project3-hint">
+          Upload your <code>.pptx</code> to this project (for example <code>/files/your-deck.pptx</code>) or any public
+          HTTPS URL, then set <code>pptxPublicUrl</code> in <code>js/config.js</code>. The viewer below is Microsoft’s
+          Office Online embed (requires a reachable file URL).
+        </p>
+        <div class="deck-wrap" id="project3-wrap">
+          <iframe
+            id="project3-frame"
+            class="deck-wrap__frame"
+            title="Project three slides"
+            loading="lazy"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </section>
+
+      <section class="panel panel--reflection" id="section-reflection" aria-labelledby="label-reflection">
+        <div class="panel__head">
+          <span class="panel__index">04</span>
+          <h2 class="panel__title" id="label-reflection">Written reflection</h2>
+        </div>
+        <div class="reflection prose" id="reflection-body"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>ENGR 407 · <span id="footer-year"></span></p>
+    </footer>
+
+    <script>
+      document.getElementById("footer-year").textContent = new Date().getFullYear();
+    </script>
+    <script src="/js/config.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>
