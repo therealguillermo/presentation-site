@@ -128,7 +128,8 @@ code {
 }
 
 main {
-  max-width: 56rem;
+  /* Wider container so Project 1/3 cards can stay large */
+  max-width: 72rem;
   margin: 0 auto;
   padding: 0 clamp(1.25rem, 5vw, 3rem) 4rem;
 }
@@ -180,6 +181,8 @@ main {
 }
 
 .browser-chrome {
+  width: 100%;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -227,11 +230,14 @@ main {
 }
 
 .embed-shell {
+  width: 100%;
+  margin: 0 auto;
   position: relative;
   border: 1px solid var(--border);
   border-radius: 0 0 10px 10px;
   overflow: hidden;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 16 / 9;
+  min-height: 560px;
   background: #050508;
 }
 
@@ -268,7 +274,7 @@ main {
 .gallery-card {
   margin: 0 auto;
   width: 100%;
-  max-width: 920px;
+  max-width: 640px;
   border-radius: 10px;
   overflow: hidden;
   border: 1px solid var(--border);
@@ -329,11 +335,14 @@ main {
 }
 
 .deck-wrap {
+  width: 100%;
+  margin: 0 auto;
   position: relative;
   border-radius: 10px;
   overflow: hidden;
   border: 1px solid var(--border);
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 16 / 9;
+  min-height: 560px;
   background: #050508;
 }
 
@@ -368,6 +377,10 @@ main {
 
 .prose p {
   margin: 0 0 1rem;
+}
+
+.reflection.prose p {
+  text-indent: 2em;
 }
 
 .prose p:last-child {

@@ -23,16 +23,7 @@
     return window.location.origin + path;
   }
 
-  function getDeckDownloadHref() {
-    var path = (cfg.pptxFilePath || "").trim();
-    if (!path) return "";
-    if (path.indexOf("http") === 0) return path;
-    if (window.location.protocol === "file:") return "";
-    return window.location.origin + path;
-  }
-
   setText("site-title", cfg.title);
-  setText("site-subtitle", cfg.subtitle);
   setText("label-p1", cfg.project1Label);
   setText("label-p2", cfg.project2Label);
   setText("label-p3", cfg.project3Label);
@@ -82,9 +73,6 @@
 
   var deckFrame = document.getElementById("project3-frame");
   var deckWrap = document.getElementById("project3-wrap");
-  var deckOpen = document.getElementById("deck-open");
-  var deckDownload = document.getElementById("deck-download");
-  var deckActions = document.getElementById("deck-actions");
 
   var deckUrl = getDeckAbsoluteUrl();
   if (deckFrame && deckUrl) {
@@ -92,13 +80,6 @@
     deckFrame.title = cfg.project3Label || "Slides";
   } else if (deckWrap) {
     deckWrap.classList.add("deck-wrap--empty");
-  }
-
-  if (deckActions) {
-    var dl = getDeckDownloadHref();
-    if (dl && deckDownload) deckDownload.href = dl;
-    if (deckUrl && deckOpen) deckOpen.href = deckUrl;
-    if (deckUrl || dl) deckActions.removeAttribute("hidden");
   }
 
   var reflection = document.getElementById("reflection-body");
