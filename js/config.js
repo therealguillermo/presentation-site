@@ -29,7 +29,7 @@ window.ENGR407_CONFIG = {
 
   project3Label: "Project Three - Hot Rod",
 
-  reflectionTitle: "Written reflection",
+  reflectionTitle: "Reflection",
   reflectionHtml:
     "<p>ENGR 407 helped me realize that effective teamwork and strong communication are essential for success in any collaborative environment. The biggest takeaway I gained from the course is how closely these two ideas are connected and how each project reinforced their importance. Without good teamwork, it becomes difficult to work efficiently, divide responsibilities, and make meaningful progress toward shared goals. At the same time, one of the foundations of strong teamwork is clear and consistent communication. As college students balancing different schedules and commitments between group members can be a serious challenge, communication is what keeps everyone aligned and ensures that tasks and work move forward smoothly. Whether it was coordinating deadlines, sharing ideas, or resolving problems, strong communication made collaboration not just more effective but also less stressful. Overall, these experiences showed me that teamwork is not just about working together, but about staying connected, maintaining accountability, and to be intentional in how we interact with one another.</p>"
 };
